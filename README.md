@@ -41,5 +41,6 @@ The project employs both early and late fusion techniques to combine data from m
 ├── definitions.py  # Definitions and configurations used across the project
 ├── __init__.py  # Initialization script for the package
 ├── README.md  # Project overview
-└── requirements.txt  # Dependencies for the project
+└── Report.pdf  # Project Report
+
 ```
