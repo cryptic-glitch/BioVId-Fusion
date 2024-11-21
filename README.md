@@ -28,7 +28,7 @@ The following pre-processing techniques were implemented for Biosignals:
   derived based on entropy (approximate and sample entropy), stationarity, and statistical moments.
 - Windowing: All features were computed on a window of 5.5 seconds, resulting in a total of 131 features extracted from the biosignals.
 
-Dataset
+## Dataset
 In these experiments the BioVid Heat Pain database [19] is analysed. It comprises 90 participants ((1) 18-35 years (n = 30 years; 15 men, 15 women), (2) 36-50
 years (n = 30; 15 men, 15 women), and (3) 51-65 years (n = 30; 15 men, 15 women)) Each of the 4 diﬀerent stimulation strengths was applied 20 times to give rise to a total of 80 responses. During the experiments, high resolution video (from 3 diﬀerent cameras), sensor data of a Kinect, and a biophysiological ampliﬁer were recorded. The physiological channels included electromyography (EMG) (zygomaticus, corrugator and trapezius muscles), skin conductance level (SCL) and an electrocardiogram (ECG).
 
