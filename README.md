@@ -3,20 +3,47 @@
 # Person-Independent Pain Intensity Recognition
 
 ## Project Description
+ 
+This project is focused on person-independent pain intensity recognition using machine learning techniques. The main objective of this project is to use Multimodal fusion, to classify pain intensity from two different types of data sources i.e Biosensors Data and Videos. Two types of fusion techniques were implemented, which were Early Fusion and Late Fusion.     
+The data was grouped (from both the data sources) into binary categories: 'no/mild pain' (0-2) and 'high pain' (3-4). 
 
-This project is focused on person-independent pain intensity recognition using machine learning techniques. The objective is to classify pain intensity from video and biosensor data, particularly aiming for robust classification across various subjects. The data is grouped into binary categories: 'no/mild pain' (0-2) and 'high pain' (3-4), using models such as Random Forest, SVM, and Multilayer Perceptron.
+The following ML algorithms were used:
+- SVM
+- Random Forest
+- XGBoost with Random Forest
 
-The project employs both early and late fusion techniques to combine data from multiple sources, specifically biosensors and video, allowing for a more comprehensive analysis of pain intensity levels.
+## Pre-Processing
 
-## Features
+The following pre-processing techniques were implemented for Videos: 
+- Head Pose Estimation using Dlib:  Features extracted included fold intensity, eyebrow distance, eye closure, mouth height, yaw, pitch, roll, and translation (x, y, z).
+- Nasolabial Fold Intensity: Analyzing the deepening of the nasolabial fold as a pain indicator.
+- Low-Pass Filtering
+- Temporal Derivatives
+- Statistical Parameters Extraction: Mean, Median , Standard Deviation, Range, Inter-quartile Range, Inter-decile Range and Median Absolute Deviation
 
-- Binary classification of pain intensity from multi-modal data sources (biosensors and video).
-- Implements various machine learning models including:
-  - Random Forest
-  - Support Vector Machine (SVM)
-  - Multilayer Perceptron (MLP)
-- Uses early, late, and hybrid fusion methods to combine different data modalities.
-- Hyperparameter tuning for optimized classification accuracy.
+The following pre-processing techniques were implemented for Biosignals:
+- Filtering: A Butterworth bandpass filter was used to reduce noise and minimize the effects of trends in the signals.
+- Noise Reduction for EMG: An additional noise reduction procedure based on Empirical Mode Decomposition (EMD) was applied to the EMG signals.
+- Feature Extraction: Which include peak height, peak difference, mean absolute difference, Fourier coefficients, bandwidth. Additional features were
+  derived based on entropy (approximate and sample entropy), stationarity, and statistical moments.
+- Windowing: All features were computed on a window of 5.5 seconds, resulting in a total of 131 features extracted from the biosignals.
+
+Dataset
+In these experiments the BioVid Heat Pain database [19] is analysed. It comprises 90 participants ((1) 18-35 years (n = 30 years; 15 men, 15 women), (2) 36-50
+years (n = 30; 15 men, 15 women), and (3) 51-65 years (n = 30; 15 men, 15 women)) Each of the 4 diﬀerent stimulation strengths was applied 20 times to give rise to a total of 80 responses. During the experiments, high resolution video (from 3 diﬀerent cameras), sensor data of a Kinect, and a biophysiological ampliﬁer were recorded. The physiological channels included electromyography (EMG) (zygomaticus, corrugator and trapezius muscles), skin conductance level (SCL) and an electrocardiogram (ECG).
+
+Results
+## Results
+
+| Method                        | My Results |
+|-------------------------------|------------|
+| Early Fusion SVM              | 0.66       |
+| Early Fusion RF               | 0.67       |
+| Early Fusion XGBoost          | 0.6975     |
+| Video                         | 0.68       |
+| Video (XGBoost)               | 0.7288     |
+| Late Fusion (Weighted Average)| 0.66       |
+
 
 ## Project Structure
 
